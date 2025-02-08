@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class FrontEndController {
 
-    @GetMapping("insurance")
+    @GetMapping("index")
     public String forward() {
-        return "/";
+        return "hola";
     }
 }

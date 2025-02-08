@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(value = "http://localhost:5173/")
+@CrossOrigin(value = "https://react-insurance-app.vercel.app/")
 @RequestMapping("/auth")
 @EnableMethodSecurity
 public class UsersRestController {
