@@ -12,7 +12,6 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-
     private String fName;
     private String lName;
     private String phone;
@@ -23,7 +22,8 @@ public class Users {
     private Integer claimAllowance;
     private Integer numberOfClaim;
 
-    public Users(Long id, String fName, String lName, String phone, String email, String password, String plan, String device, Integer claimAllowance, Integer numberOfClaim) {
+    public Users(Long id, String fName, String lName, String phone, String email, String password,
+                 String plan, String device, Integer claimAllowance, Integer numberOfClaim) {
         Id = id;
         this.fName = fName;
         this.lName = lName;

@@ -15,7 +15,7 @@ public class UsersServiceImpl implements IUsersService{
     private UsersRepository usersRepository;
 
     @Autowired
-    private  PasswordEncoder  passwordEncoder;
+    private  PasswordEncoder passwordEncoder;
 
     @Override
     public List<Users> listUsers() {
@@ -24,7 +24,8 @@ public class UsersServiceImpl implements IUsersService{
 
     @Override
     public Users findUserById(Long id) {
-        return usersRepository.findById(id).orElse(null);
+        return usersRepository.
+                findById(id).orElse(null);
     }
 
     @Override

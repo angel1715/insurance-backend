@@ -36,6 +36,7 @@ public class UsersRestController {
         var savedUser = usersService.saveUser(user);
         return ResponseEntity.ok(savedUser);
     }
+
     @PreAuthorize("permitAll()")
     @GetMapping("/listUsers")
     public List<Users> listAllUsers(){
@@ -54,10 +55,7 @@ public class UsersRestController {
           usersService.saveUser(User);
           return ResponseEntity.ok(User);
       }
-
           return ResponseEntity.ok("You've reached your claim limit");
-
-
     }
 
     @PostMapping("/login/{email}/{password}")
@@ -65,11 +63,14 @@ public class UsersRestController {
 
         var usersDB = listAllUsers();
         for(Users u: usersDB){
-            if(u.getEmail().equals(email) && new BCryptPasswordEncoder().matches(password, u.getPassword())){
+            if(u.getEmail().equals(email) && new BCryptPasswordEncoder().
+                    matches(password, u.getPassword())){
 
                 String token = Jwts.builder().setSubject(u.getfName()).
-                        setIssuedAt(new Date()).setExpiration(new Date(System.currentTimeMillis() + 3600000)).
-                        signWith(Keys.hmacShaKeyFor(SECRET_KEY.getBytes()), SignatureAlgorithm.HS256).compact();
+                        setIssuedAt(new Date()).setExpiration(new Date(System.
+                                currentTimeMillis() + 3600000)).
+                        signWith(Keys.hmacShaKeyFor(SECRET_KEY.getBytes()),
+                                SignatureAlgorithm.HS256).compact();
 
                 u.setPassword(null);
                 return ResponseEntity.ok(Map.of("jwt", token, "user", u));
